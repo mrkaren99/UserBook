@@ -1,5 +1,6 @@
 <%@ page import="am.itspace.userBook.model.Book" %>
 <%@ page import="java.util.List" %>
+<%@ page import="am.itspace.userBook.model.User" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -7,7 +8,8 @@
     <title>Index</title>
 </head>
 <body>
-<% String msg = (String) session.getAttribute("msg");%>
+<% User user = (User) session.getAttribute("user");
+    String msg = (String) session.getAttribute("msg");%>
 <% if (msg != null && !"".equals(msg)) { %>
 <span><%=msg%></span>
 <%
@@ -15,7 +17,7 @@
     }%>
 
 <% List<Book> books = (List<Book>) request.getAttribute("books");%>
-
+Welcome <%=user.getName() %> | <a href="/logout">Logout</a>
 <a href="/addBook">Add Book</a>
 
 <table border="1">

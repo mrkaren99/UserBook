@@ -11,7 +11,7 @@
 <%
         session.removeAttribute("msg");
     }%>
-<h1>AddBook</h1>
+<h1>AddBook</h1> | <a href="/logout">Logout</a>
 
 
 <form action="/addBook" method="post" enctype="multipart/form-data">

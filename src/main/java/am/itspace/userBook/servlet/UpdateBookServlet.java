@@ -2,7 +2,6 @@ package am.itspace.userBook.servlet;
 
 import am.itspace.userBook.manager.BookManager;
 import am.itspace.userBook.model.Book;
-import am.itspace.userBook.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet(urlPatterns = "/updateBook")
 @MultipartConfig(

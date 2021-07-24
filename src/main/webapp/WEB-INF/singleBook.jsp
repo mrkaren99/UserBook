@@ -13,7 +13,7 @@
 
     Book book = (Book) request.getAttribute("book");%>
 
-<a href="/home" >Go Home</a>
+<a href="/home" >Go Home</a> | <a href="/logout">Logout</a>
 
 
 <h1> <%=book.getTitle()%> </h1>

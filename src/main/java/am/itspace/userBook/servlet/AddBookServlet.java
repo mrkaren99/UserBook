@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
 @WebServlet(urlPatterns = "/addBook")
 @MultipartConfig(
@@ -35,6 +34,7 @@ public class AddBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
+
         Part filePart = req.getPart("picture");
         String fileName = filePart.getSubmittedFileName();
         String picUrl = System.currentTimeMillis() + "_" + fileName;
@@ -56,5 +56,6 @@ public class AddBookServlet extends HttpServlet {
         bookManager.addBook(book);
         req.getSession().setAttribute("msg", "book was added");
         resp.sendRedirect("/addBook");
+
     }
 }
