@@ -6,6 +6,8 @@
 <html>
 <head>
     <title>Index</title>
+    <script src="js/jquery-3.6.0.js"></script>
+
 </head>
 <body>
 <% User user = (User) session.getAttribute("user");
@@ -16,32 +18,25 @@
         session.removeAttribute("msg");
     }%>
 
-<% List<Book> books = (List<Book>) request.getAttribute("books");%>
 Welcome <%=user.getName() %> | <a href="/logout">Logout</a>
 <a href="/addBook">Add Book</a>
 
-<table border="1">
+<div id="books"></div>
 
-    <tr>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Action</th>
-    </tr>
-    <% if (books != null && !books.isEmpty()) {
-        for (Book book : books) {
-    %>
-    <tr>
-        <td><%=book.getTitle()%>
-        </td>
-        <td><%=book.getPrice()%>
-        </td>
-        <td><a href="/singleBook?id=<%=book.getId()%>">Show more</a> | <a
-                href="/updateBook?id=<%=book.getId()%>">Update</a> | <a
-                href="/deleteBook?id=<%=book.getId()%>">Delete</a></td>
-    </tr>
-    <% }
-    }%>
-</table>
+<script>
+    $(document).ready(function () {
+        getBooks();
+        setInterval(getBooks, 3000);
+    })
 
+    function getBooks() {
+        $.ajax({
+            url: 'http://localhost:8080/books',
+            method: 'GET'
+        }).done(function (data) {
+            $("#books").html(data)
+        })
+    }
+</script>
 </body>
 </html>

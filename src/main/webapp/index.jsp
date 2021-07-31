@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Index</title>
+    <script src="js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <%
@@ -34,5 +35,23 @@
     re-password: <input type="password" name="re-password"> <br>
     <input type="submit" value="register">
 </form>
+
+<div>
+    <div id="box" style="width: 200px; height: 200px; border: 1px solid black; background-color: blue"></div>
+    <button onclick="changeColor()">Change to Red</button>
+</div>
 </body>
+
+<script>
+
+    $(document).ready(function (){
+        // alert("hello")
+    })
+
+    function changeColor() {
+        $('#box').toggle();
+    }
+
+
+</script>
 </html>
